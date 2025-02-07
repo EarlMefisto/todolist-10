@@ -4,12 +4,12 @@ import {
   changeTaskStatusAC,
   changeTaskTitleAC,
   deleteTaskAC,
-} from "@/model/tasks-reducer";
-import { getListItemSx } from "@/TodolistItem.styles";
+} from "@/features/todolists/model/tasks-reducer";
 import { ListItem, Checkbox, IconButton } from "@mui/material";
 import { ChangeEvent } from "react";
-import { Task, Todolist } from "./App";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Task, Todolist } from "@/app/App";
+import { getListItemSx } from "./TaskItem.styles";
 
 type Props = {
   task: Task;
@@ -18,7 +18,9 @@ type Props = {
 
 export const TaskItem = ({ task, todolist }: Props) => {
   const { id } = todolist;
+
   const dispatch = useAppDispatch();
+
   const deleteTask = () => {
     dispatch(deleteTaskAC({ todolistId: id, taskId: task.id }));
   };
@@ -37,6 +39,7 @@ export const TaskItem = ({ task, todolist }: Props) => {
   const changeTaskTitle = (title: string) => {
     dispatch(changeTaskTitleAC({ todolistId: id, taskId: task.id, title }));
   };
+
   return (
     <ListItem sx={getListItemSx(task.isDone)}>
       <div>

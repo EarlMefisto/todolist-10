@@ -1,8 +1,8 @@
+import { FilterValues, Todolist } from "@/app/App";
 import { useAppDispatch } from "@/common/hooks/useAppDispatch";
-import { changeTodolistFilterAC } from "@/model/todolists-reducer";
-import { containerSx } from "@/TodolistItem.styles";
+import { containerSx } from "@/common/styles/container.styles";
+import { changeTodolistFilterAC } from "@/features/todolists/model/todolists-reducer";
 import { Box, Button } from "@mui/material";
-import { Todolist, FilterValues } from "./App";
 
 type Props = {
   todolist: Todolist;
@@ -10,7 +10,7 @@ type Props = {
 
 export const FilterButtons = ({ todolist }: Props) => {
   const { id, filter } = todolist;
-  
+
   const dispatch = useAppDispatch();
 
   const changeFilter = (filter: FilterValues) => {

@@ -1,13 +1,13 @@
 import { beforeEach, expect, test } from "vitest";
-import type { TasksState } from "../../app/App";
+import type { TasksState } from "@/app/App";
+import { createTodolistAC, deleteTodolistAC } from "../todolists-reducer";
 import {
+  tasksReducer,
+  deleteTaskAC,
+  createTaskAC,
   changeTaskStatusAC,
   changeTaskTitleAC,
-  createTaskAC,
-  deleteTaskAC,
-  tasksReducer,
 } from "../tasks-reducer";
-import { createTodolistAC, deleteTodolistAC } from "../todolists-reducer";
 
 let startState: TasksState = {};
 

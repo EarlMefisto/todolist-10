@@ -1,22 +1,16 @@
 import {
-  createTaskAC,
   changeTaskStatusAC,
   changeTaskTitleAC,
-} from "@/model/tasks-reducer";
-
-import {
-  changeTodolistFilterAC,
-  changeTodolistTitleAC,
-} from "@/model/todolists-reducer";
-import { TodolistItem } from "@/common/features/todolists/ui/Todolists/TodolistItem/TodolistItem";
+} from "@/features/todolists/model/tasks-reducer";
+import { TodolistItem } from "@/features/todolists/ui/Todolists/TodolistItem/TodolistItem";
 import { Grid2, Paper } from "@mui/material";
-import { FilterValues } from "./App";
 import { useAppDispatch } from "@/common/hooks/useAppDispatch";
 import { useAppSelector } from "@/common/hooks/useAppSelector";
-import { selectTodolists } from "@/model/todolists-selectors";
+import { selectTodolists } from "@/features/todolists/model/todolists-selectors";
 
 export const Todolists = () => {
   const todolists = useAppSelector(selectTodolists);
+
   const dispatch = useAppDispatch();
 
   const changeTaskStatus = (
@@ -34,6 +28,7 @@ export const Todolists = () => {
   ) => {
     dispatch(changeTaskTitleAC({ todolistId, taskId, title }));
   };
+
   return (
     <>
       {todolists.map((todolist) => {

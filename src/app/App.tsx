@@ -1,9 +1,9 @@
 import "./App.css";
 import { ThemeProvider } from "@mui/material/styles";
-import { useAppSelector } from "../common/hooks/useAppSelector";
+import { useAppSelector } from "@/common/hooks/useAppSelector";
 import CssBaseline from "@mui/material/CssBaseline";
-import { selectThemMode } from "./app-selectors";
-import { getTheme } from "../common/theme/theme";
+import { selectThemeMode } from "./app-selectors";
+import { getTheme } from "@/common/theme/theme";
 import { Header } from "@/common/components/Header/Header";
 import { Main } from "./Main";
 
@@ -24,7 +24,7 @@ export type FilterValues = "all" | "active" | "completed";
 export type TasksState = Record<string, Task[]>;
 
 export const App = () => {
-  const themeMode = useAppSelector(selectThemMode);
+  const themeMode = useAppSelector(selectThemeMode);
   const theme = getTheme(themeMode);
 
   return (

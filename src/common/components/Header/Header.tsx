@@ -3,13 +3,14 @@ import { selectThemeMode } from "@/app/app-selectors";
 import { useAppDispatch } from "@/common/hooks/useAppDispatch";
 import { useAppSelector } from "@/common/hooks/useAppSelector";
 import { getTheme } from "@/common/theme/theme";
-import { NavButton } from "@/NavButton";
-import { containerSx } from "@/TodolistItem.styles";
+import { NavButton } from "@/common/components/NavButton/NavButton";
 import { AppBar, Toolbar, Container, IconButton, Switch } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { containerSx } from "@/common/styles/container.styles";
 
 export const Header = () => {
   const themeMode = useAppSelector(selectThemeMode);
+  const theme = getTheme(themeMode);
 
   const dispatch = useAppDispatch();
 
@@ -18,8 +19,6 @@ export const Header = () => {
       changeThemeModeAC({ themeMode: themeMode == "light" ? "dark" : "light" })
     );
   };
-
-  const theme = getTheme(themeMode);
 
   return (
     <AppBar position="static" sx={{ mb: "30px" }}>
